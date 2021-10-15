@@ -157,7 +157,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 django_heroku.settings(locals())
 
-# AUTH_USER_MODEL = 'employee_data_app.User'
+AUTH_USER_MODEL = 'employee_data_app.User'
 
 from django.contrib.messages import constants as messages
 

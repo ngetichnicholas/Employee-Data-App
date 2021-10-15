@@ -11,7 +11,7 @@ class UserSignUpForm(UserCreationForm):
     password2 = forms.CharField(label='Confirm password', 
                                 widget=forms.PasswordInput)
     class Meta:
-        model=User
+        model=Employee
         fields=("first_name","middle_name","username","email","password1","password2")
         help_texts = {
             "username":None,
