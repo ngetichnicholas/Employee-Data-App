@@ -16,3 +16,9 @@ class UserSignUpForm(UserCreationForm):
         help_texts = {
             "username":None,
         }
+
+class UpdateUserForm(forms.ModelForm):
+  email = forms.EmailField()
+  class Meta:
+    model = User
+    fields = ['username','full_name','email','profile_picture','bio']

@@ -34,3 +34,24 @@ def signup_view(request):
     else:
         signup_form = UserSignUpForm()
     return render(request, 'registration/signup.html', {'signup_form': signup_form})
+
+@login_required
+def profile(request):
+  current_user = request.user
+
+  return render(request,'profile/profile.html',{"current_user":current_user})
+
+@login_required
+def update_profile(request):
+  if request.method == 'POST':
+    user_form = UpdateUserForm(request.POST,request.FILES,instance=request.user)
+    if user_form.is_valid():
+      user_form.save()
+      messages.success(request,'Your Profile account has been updated successfully')
+      return redirect('profile')
+  else:
+    user_form = UpdateUserForm(instance=request.user)
+  params = {
+    'user_form':user_form,
+  }
+  return render(request,'profile/update.html',params)
