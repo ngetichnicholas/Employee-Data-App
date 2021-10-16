@@ -55,10 +55,9 @@ def login(request):
   form = AuthenticationForm()
   return render(request = request,template_name = "registration/login.html",context={"form":form})
 
-def logout(request):
-    """logout logged in user"""
+def custom_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse_lazy('index'))
+    return render(request,'registration/logout.html')
 
 @login_required
 def profile(request):
