@@ -4,8 +4,7 @@ from django.db.models.deletion import CASCADE
 
 # Create your models here.
 class User(AbstractUser):
-    first_name = models.CharField(max_length=60)
-    middle_name = models.CharField(max_length=60)
+    full_name = models.CharField(max_length=144)
     email = models.EmailField(unique=True)
     bio = models.TextField(null=True)
     profile_picture = models.ImageField(upload_to='profiles')
