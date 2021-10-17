@@ -72,7 +72,43 @@ def add_employee(request):
   else:
     add_employee_form = EmployeeForm()
     
-  return render(request, 'add_employee.html',{'add_employee_form':add_employee_form})
+  return render(request, 'employees/add_employee.html',{'add_employee_form':add_employee_form})
+
+@login_required
+def employees(request):
+  employees = Employee.objects.all().order_by('-employee_code')
+  return render(request,'employees/employees.html',{'employees':employees})
+
+def employee_details(request,employee_id):
+  current_user = request.user
+  employee = Employee.objects.get(pk = employee_id)
+ 
+  return render(request, 'employees/employee_page.html', {'current_user':current_user,'employee':employee})
+
+@login_required
+def update_employee(request, employee_id):
+  employee = Employee.objects.get(pk=employee_id)
+  if request.method == 'POST':
+    update_employee_form = EmployeeForm(request.POST,request.FILES, instance=employee)
+    if update_employee_form.is_valid():
+      update_employee_form.save()
+      messages.success(request, f'employee updated!')
+      return redirect('employees')
+  else:
+    update_employee_form = EmployeeForm(instance=employee)
+  context = {
+      "update_employee_form":update_employee_form,
+      "employee":employee
+  }
+  return render(request, 'employees/update_employee.html', context)
+
+@login_required
+def delete_employee(request,employee_id):
+  employee = Employee.objects.get(pk=employee_id)
+  if employee:
+    employee.delete_employee()
+    messages.success(request, f'employee deleted!')
+  return redirect('employees')
 
 @login_required
 def profile(request):
