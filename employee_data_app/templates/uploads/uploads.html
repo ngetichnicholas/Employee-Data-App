@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      {% if messages %}
+      {% for message in messages %}
+      <div class="row ">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="alert text-center {{ message.tags }} alert-dismissible" role="alert" id="messages">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      {% endfor %}
+      {% endif %}
+      <div class="head">
+        <h5 class="title">UPLOADS</h5>
+        <a class="nav-item nav-link text-center" href="{% url 'add_upload' %}"><button class="btn btn-success">New
+            upload</button></a>
+      </div>
+      <table class="table table-bordered">
+        <tr>
+          <th>Excel</th>
+          <th>Title</th>
+          <th>Date Uploaded</th>
+          <th>Edit</th>
+          <th>View Details</th>
+          <th>Delete</th>
+        </tr>
+        {% for upload in uploads %}
+        <tr>
+          <td><i class="fa fa-file-excel-o" aria-hidden="true"></i>{{upload.excel_file}}</td>
+          <td>{{upload.title}}</td>
+          <td>{{upload.timestamp|date}}</td>
+          <td><a href="{% url 'update_upload' upload.id %}" class="btn btn-warning"><i class="fas fa-pen-nib"></i>
+              Update</a></td>
+          <td><a href="{% url 'upload_details' upload.id %}" class="btn btn-success"><i class="fas fa-eye"></i> View Details</a></td>
+          <td><a href="{% url 'delete_upload' upload.id %}" class="btn  btn-danger"><i class="fas fa-trash-alt"></i>
+              Delete</a></td>
+        </tr>
+        {% empty %}
+                    <tr>
+                        <td class="text-danger" colspan='6'>Your don't have uploads yet. You can add by clicking the button above</td>
+                    </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+{% endblock %}
