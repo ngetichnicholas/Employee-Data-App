@@ -37,19 +37,25 @@
         </tr>
         {% for upload in uploads %}
         <tr>
-          <td><i class="fa fa-file-excel-o" aria-hidden="true"></i>{{upload.excel_file}}</td>
+          <td>
+            <div class="card">
+              <a href="{{upload.excel_file}}" download="" class="btn btn-outline-success doc"><h2><i class="fas fa-file-excel"></i></h2><i class="fa fa-download"
+                  aria-hidden="true"></i> Download </a>
+            </div>
+          </td>
           <td>{{upload.title}}</td>
           <td>{{upload.timestamp|date}}</td>
           <td><a href="{% url 'update_upload' upload.id %}" class="btn btn-warning"><i class="fas fa-pen-nib"></i>
               Update</a></td>
-          <td><a href="{% url 'upload_details' upload.id %}" class="btn btn-success"><i class="fas fa-eye"></i> View Details</a></td>
+          <td><a href="{% url 'upload_details' upload.id %}" class="btn btn-success"><i class="fas fa-eye"></i> View
+              Details</a></td>
           <td><a href="{% url 'delete_upload' upload.id %}" class="btn  btn-danger"><i class="fas fa-trash-alt"></i>
               Delete</a></td>
         </tr>
         {% empty %}
-                    <tr>
-                        <td class="text-danger" colspan='6'>Your don't have uploads yet. You can add by clicking the button above</td>
-                    </tr>
+        <tr>
+          <td class="text-danger" colspan='6'>Your don't have uploads yet. You can add by clicking the button above</td>
+        </tr>
         {% endfor %}
       </table>
     </div>
