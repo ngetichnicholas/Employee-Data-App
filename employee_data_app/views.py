@@ -186,7 +186,7 @@ def add_upload(request):
             return redirect('index')
     else:
         upload_form = UploadFileForm()
-    return render(request, 'upload_excel.html', {'upload_form': upload_form})
+    return render(request, 'uploads/upload_excel.html', {'upload_form': upload_form})
 
 @login_required
 def profile(request):

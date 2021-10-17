@@ -20,6 +20,10 @@ urlpatterns = [
     path('employee_details/<int:employee_id>',app_views.employee_details,name='employee_details'),
 
     path('add_upload',app_views.add_upload,name='add_upload'),
+    path('uploads', app_views.uploads,name='uploads'),
+    path('update_upload/<int:upload_id>', app_views.update_upload,name='update_upload'),
+    path('delete_upload/<int:upload_id>', app_views.delete_upload,name='delete_upload'),
+    path('upload_details/<int:upload_id>',app_views.upload_details,name='upload_details'),
 
 ]
 if settings.DEBUG:
