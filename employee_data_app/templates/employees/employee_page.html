@@ -55,7 +55,11 @@
         </tr>
         <tr>
           <th>Supervisors</th>
-          <td>{{employee.supervisors}}</td>
+          <td>
+            {% for supervisor_object in employee.supervisors.all %}
+            {{supervisor_object.name.first_name}} {{supervisor_object.name.middle_name}} <br>
+            {% endfor %}
+          </td>
         </tr>
         <tr>
 

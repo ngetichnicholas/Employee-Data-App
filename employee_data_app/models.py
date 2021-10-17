@@ -38,7 +38,7 @@ class Employee(models.Model):
         return f"{self.first_name} {self.middle_name}"
 
 class Supervisor(models.Model):
-    employee_id = models.ForeignKey(Employee,on_delete=CASCADE)
+    name = models.OneToOneField(Employee,blank=True,on_delete=CASCADE)
 
     def save_supervisor(self):
         self.save()
@@ -47,4 +47,4 @@ class Supervisor(models.Model):
         self.delete()
 
     def __str__(self):
-        return f"{self.employee_id.first_name} {self.employee_id.middle_name}"
+        return f"{self.name.first_name} {self.name.middle_name}"

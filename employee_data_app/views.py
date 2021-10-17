@@ -75,6 +75,21 @@ def add_employee(request):
   return render(request, 'employees/add_employee.html',{'add_employee_form':add_employee_form})
 
 @login_required
+def add_supervisor(request):
+  if request.method == 'POST':
+    add_supervisor_form = SupervisorForm(request.POST,request.FILES)
+    if add_supervisor_form.is_valid():
+      supervisor = add_supervisor_form.save(commit=False)
+      supervisor.save()
+      messages.success(request, f'New supervisor added!')
+      return redirect('index')
+
+  else:
+    add_supervisor_form = SupervisorForm()
+    
+  return render(request, 'add_supervisor.html',{'add_supervisor_form':add_supervisor_form})
+
+@login_required
 def employees(request):
   employees = Employee.objects.all().order_by('-employee_code')
   return render(request,'employees/employees.html',{'employees':employees})
@@ -88,6 +103,8 @@ def employee_details(request,employee_id):
 @login_required
 def update_employee(request, employee_id):
   employee = Employee.objects.get(pk=employee_id)
+  print(employee.supervisors)
+
   if request.method == 'POST':
     update_employee_form = EmployeeForm(request.POST,request.FILES, instance=employee)
     if update_employee_form.is_valid():

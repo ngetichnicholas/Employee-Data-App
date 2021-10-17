@@ -31,3 +31,8 @@ class EmployeeForm(forms.ModelForm):
             'graduation_date': widgets.DateInput(attrs={'type': 'date'}),
             'employment_date': widgets.DateInput(attrs={'type': 'date'}),
         }
+
+class SupervisorForm(forms.ModelForm):
+  class Meta:
+    model = Supervisor
+    fields = '__all__'
