@@ -8,11 +8,11 @@ from django.contrib import messages
 from django.contrib.auth import login as auth_login
 from django.core.exceptions import ObjectDoesNotExist
 
+import openpyxl
 
 from .models import *
 from .forms import *
 from .email import *
-
 
 # Create your views here.
 def index(request):
@@ -103,7 +103,6 @@ def employee_details(request,employee_id):
 @login_required
 def update_employee(request, employee_id):
   employee = Employee.objects.get(pk=employee_id)
-  print(employee.supervisors)
 
   if request.method == 'POST':
     update_employee_form = EmployeeForm(request.POST,request.FILES, instance=employee)
@@ -126,6 +125,43 @@ def delete_employee(request,employee_id):
     employee.delete_employee()
     messages.success(request, f'employee deleted!')
   return redirect('employees')
+
+#Uploads display view
+def uploads(request):
+    files = Upload.objects.all()
+    return render(request, 'uploads.html', {'files':files})
+
+#Add new upload
+def add_upload(request):
+    if request.method == 'POST':
+        excel_file = request.FILES["excel_file"]
+
+        upload_form = UploadFileForm(request.POST, request.FILES)
+
+        if upload_form.is_valid():
+            wb = openpyxl.load_workbook(excel_file)
+            sheet = wb.worksheets[0]
+            row_count = sheet.max_row
+            print(sheet)
+
+            excel_data = list()
+            for row in sheet.iter_rows():
+                row_data = list()
+                for cell in row:
+                    row_data.append(str(cell.value))
+                    print(cell.value)
+                excel_data.append(row_data)
+
+            upload = upload_form.save(commit=False)
+            upload.records_uploaded = row_count
+            upload.status = 'Complete'
+            upload.errors = 'None'
+            upload.save()
+            messages.success(request,"Excel file uploaded successfully")
+            return redirect('index')
+    else:
+        upload_form = UploadFileForm()
+    return render(request, 'upload_excel.html', {'upload_form': upload_form})
 
 @login_required
 def profile(request):

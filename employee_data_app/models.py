@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.deletion import CASCADE
+from django.core.validators import FileExtensionValidator
+
 
 # Create your models here.
 class User(AbstractUser):
@@ -48,3 +50,20 @@ class Supervisor(models.Model):
 
     def __str__(self):
         return f"{self.name.first_name} {self.name.middle_name}"
+
+class Upload(models.Model):
+    title = models.CharField(max_length=144)
+    excel_file = models.FileField(upload_to = 'excel/%Y/%m/%d', validators = [FileExtensionValidator(allowed_extensions = ['xlsx'])])
+    timestamp = models.DateTimeField(auto_now_add=True)
+    records_uploaded = models.IntegerField(blank=True,null=True)
+    status = models.CharField(max_length=20,blank=True,null=True)
+    errors = models.CharField(max_length=100,blank=True,null=True)
+
+    def save_upload(self):
+        self.save()
+
+    def delete_upload(self):
+        self.delete()
+
+    def __str__(self):
+        return f"{self.title}"

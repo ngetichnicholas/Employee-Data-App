@@ -36,3 +36,8 @@ class SupervisorForm(forms.ModelForm):
   class Meta:
     model = Supervisor
     fields = '__all__'
+
+class UploadFileForm(forms.ModelForm):
+    class Meta:
+        model = Upload
+        fields = ('title','excel_file')

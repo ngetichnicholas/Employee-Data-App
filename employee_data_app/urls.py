@@ -18,6 +18,9 @@ urlpatterns = [
     path('update_employee/<int:employee_id>', app_views.update_employee,name='update_employee'),
     path('delete_employee/<int:employee_id>', app_views.delete_employee,name='delete_employee'),
     path('employee_details/<int:employee_id>',app_views.employee_details,name='employee_details'),
+
+    path('add_upload',app_views.add_upload,name='add_upload'),
+
 ]
 if settings.DEBUG:
   urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
