@@ -131,6 +131,41 @@ def uploads(request):
     files = Upload.objects.all()
     return render(request, 'uploads.html', {'files':files})
 
+#Get single upload details
+def upload_details(request,upload_id):
+  current_user = request.user
+  upload = Upload.objects.get(pk = upload_id)
+ 
+  return render(request, 'uploads/upload_page.html', {'current_user':current_user,'upload':upload})
+
+#Update upload
+@login_required
+def update_upload(request, upload_id):
+  upload = Upload.objects.get(pk=upload_id)
+
+  if request.method == 'POST':
+    update_upload_form = UploadFileForm(request.POST,request.FILES, instance=upload)
+    if update_upload_form.is_valid():
+      update_upload_form.save()
+      messages.success(request, f'Upload updated!')
+      return redirect('uploads')
+  else:
+    update_upload_form = UploadFileForm(instance=upload)
+  context = {
+      "update_upload_form":update_upload_form,
+      "upload":upload
+  }
+  return render(request, 'uploads/update_upload.html', context)
+
+#Delete upload
+@login_required
+def delete_upload(request,upload_id):
+  upload = Upload.objects.get(pk=upload_id)
+  if upload:
+    upload.delete_upload()
+    messages.success(request, f'Upload deleted!')
+  return redirect('uploads')
+
 #Add new upload
 def add_upload(request):
     if request.method == 'POST':
@@ -142,16 +177,6 @@ def add_upload(request):
             wb = openpyxl.load_workbook(excel_file)
             sheet = wb.worksheets[0]
             row_count = sheet.max_row
-            print(sheet)
-
-            excel_data = list()
-            for row in sheet.iter_rows():
-                row_data = list()
-                for cell in row:
-                    row_data.append(str(cell.value))
-                    print(cell.value)
-                excel_data.append(row_data)
-
             upload = upload_form.save(commit=False)
             upload.records_uploaded = row_count
             upload.status = 'Complete'
