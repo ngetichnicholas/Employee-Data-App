@@ -25,13 +25,14 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{% url 'add_employee' %}">Add new Employee</a>
-          <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="{% url 'add_supervisor' %}">Add Supervisor</a>
         </div>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'employees' %}"><span class="lower"> Employees</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'uploads' %}"><span class="lower"> Uploads</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'logout' %}"><span class="lower"> Logout</span></a>

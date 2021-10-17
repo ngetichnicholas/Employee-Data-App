@@ -128,8 +128,8 @@ def delete_employee(request,employee_id):
 
 #Uploads display view
 def uploads(request):
-    files = Upload.objects.all()
-    return render(request, 'uploads.html', {'files':files})
+    uploads = Upload.objects.all()
+    return render(request, 'uploads/uploads.html', {'uploads':uploads})
 
 #Get single upload details
 def upload_details(request,upload_id):
