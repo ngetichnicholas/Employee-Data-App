@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      {% if messages %}
+      {% for message in messages %}
+      <div class="row ">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="alert text-center {{ message.tags }} alert-dismissible" role="alert" id="messages">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      {% endfor %}
+      {% endif %}
+      <div class="head">
+        <h5 class="title">EMPLOYEE DETAILS</h5>
+      </div>
+      <table class="table table-bordered">
+        <tr>
+          <th>Employee Code</th>
+          <td>{{employee.employee_code}}</td>
+        </tr>
+        <tr>
+          <th>First Name</th>
+          <td>{{employee.first_name}}</td>
+        </tr>
+        <tr>
+          <th>middle_name</th>
+          <td>{{employee.middle_name}}</td>
+        </tr>
+        <tr>
+          <th>Graduation Date</th>
+          <td>{{employee.graduation_date}}</td>
+        </tr>
+        <tr>
+          <th>Employment Date</th>
+          <td>{{employee.employment_date}}</td>
+        </tr>
+        <tr>
+          <th>Position</th>
+          <td>{{employee.position}}</td>
+        </tr>
+        <tr>
+          <th>Salary</th>
+          <td>{{employee.salary}}</td>
+        </tr>
+        <tr>
+          <th>Supervisors</th>
+          <td>{{employee.supervisors}}</td>
+        </tr>
+        <tr>
+
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+{% endblock %}
