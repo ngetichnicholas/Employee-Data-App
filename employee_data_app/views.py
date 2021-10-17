@@ -60,6 +60,21 @@ def custom_logout(request):
     return render(request,'registration/logout.html')
 
 @login_required
+def add_employee(request):
+  if request.method == 'POST':
+    add_employee_form = EmployeeForm(request.POST,request.FILES)
+    if add_employee_form.is_valid():
+      employee = add_employee_form.save(commit=False)
+      employee.save()
+      messages.success(request, f'New employee added!')
+      return redirect('index')
+
+  else:
+    add_employee_form = EmployeeForm()
+    
+  return render(request, 'add_employee.html',{'add_employee_form':add_employee_form})
+
+@login_required
 def profile(request):
   current_user = request.user
 
