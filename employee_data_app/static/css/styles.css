@@ -16,3 +16,9 @@
   .nav-link ,.navbar-brand{
     color: white !important;
   }
+  .row {
+    margin-top: 1rem !important;
+  }
+  .forms {
+    margin: 2rem;
+  }

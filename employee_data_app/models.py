@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.deletion import CASCADE
 from django.core.validators import FileExtensionValidator
+from cloudinary.models import CloudinaryField
 
 from django.utils import timezone
 import math
@@ -122,7 +123,7 @@ class Supervisor(models.Model):
 
 class Upload(models.Model):
     title = models.CharField(max_length=144)
-    excel_file = models.FileField(upload_to = 'excel/%Y/%m/%d', validators = [FileExtensionValidator(allowed_extensions = ['xlsx'])])
+    excel_file = CloudinaryField(resource_type="auto", validators = [FileExtensionValidator(allowed_extensions = ['xlsx'])])
     timestamp = models.DateTimeField(auto_now_add=True)
     records_uploaded = models.IntegerField(blank=True,null=True)
     status = models.CharField(max_length=20,blank=True,null=True)

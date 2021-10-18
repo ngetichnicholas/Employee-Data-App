@@ -97,9 +97,6 @@ def add_employee(request):
             
             employee.save()
             
-            supervisors = Supervisor.objects.get(id=int(request.POST['supervisors']))
-            employee.supervisors.add(supervisors)
-            
             messages.success(request, f'New employee added!')
             return redirect('index')
 

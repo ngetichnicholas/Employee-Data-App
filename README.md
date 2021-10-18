@@ -41,6 +41,10 @@ ALLOWED_HOSTS='*'
 DISABLE_COLLECTSTATIC=1
 EMAIL_HOST_USER='your-email-address'
 EMAIL_HOST_PASSWORD='your-email-password'
+CLOUD_API_KEY='your-cloudinary-api-key'
+API_SECRET='your-cloudinary-api-secret'
+CLOUD_NAME='your-cloudinary-name'
+SECURE=True
 ```
 
 ### Virtual Environment
