@@ -175,12 +175,21 @@ def update_upload(request, upload_id):
     upload = Upload.objects.get(pk=upload_id)
 
     if request.method == 'POST':
-        update_upload_form = UploadFileForm(
-            request.POST, request.FILES, instance=upload)
-        if update_upload_form.is_valid():
-            update_upload_form.save()
-            messages.success(request, f'Upload updated!')
-            return redirect('uploads')
+        excel_file = request.FILES["excel_file"]
+
+        upload_form = UploadFileForm(request.POST, request.FILES,instance=upload)
+
+        if upload_form.is_valid():
+            wb = openpyxl.load_workbook(excel_file)
+            sheet = wb.worksheets[0]
+            row_count = sheet.max_row
+            upload = upload_form.save(commit=False)
+            upload.records_uploaded = row_count
+            upload.status = 'Complete'
+            upload.errors = 'None'
+            upload.save()
+            messages.success(request, "Excel file uploaded successfully")
+            return redirect('index')
     else:
         update_upload_form = UploadFileForm(instance=upload)
     context = {
