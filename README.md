@@ -30,7 +30,7 @@ To open with VS Code, just run command `$ code .`
 
 ### Environment Variables
 Create `.env` file and add the following variables and update accordingly
-```sh
+```python
 SECRET_KEY='Your-Secret-key'
 DEBUG=True
 DB_NAME='database-name'
@@ -39,8 +39,8 @@ DB_PASSWORD='database-password'
 DB_HOST='127.0.0.1'
 ALLOWED_HOSTS='*'
 DISABLE_COLLECTSTATIC=1
-EMAIL_HOST_USER=your-email-address
-EMAIL_HOST_PASSWORD=your-email-password
+EMAIL_HOST_USER='your-email-address'
+EMAIL_HOST_PASSWORD='your-email-password'
 ```
 
 ### Virtual Environment
@@ -83,7 +83,7 @@ And navigate to `http://127.0.0.1:8000`.
 * CSS
 ******
 ### Live Link
-Or you can access the web application directly via this [LIVE LINK]().
+Or you can access the web application directly via this [https://nick-employee-data-app.herokuapp.com/](https://nick-employee-data-app.herokuapp.com/).
 *****
 ### License
 This project is under:  
