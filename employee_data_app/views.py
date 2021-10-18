@@ -93,7 +93,13 @@ def add_employee(request):
             code = (initial_letter+str(random_number)+last_letter)
             print(code)
             employee.employee_code = code
+          
+            
             employee.save()
+            
+            supervisors = Supervisor.objects.get(id=int(request.POST['supervisors']))
+            employee.supervisors.add(supervisors)
+            
             messages.success(request, f'New employee added!')
             return redirect('index')
 
@@ -165,15 +171,6 @@ def delete_employee(request, employee_id):
 def uploads(request):
     uploads = Upload.objects.all()
     return render(request, 'uploads/uploads.html', {'uploads': uploads})
-
-
-# Get single upload details
-def upload_details(request, upload_id):
-    current_user = request.user
-    upload = Upload.objects.get(pk=upload_id)
-
-    return render(request, 'uploads/upload_page.html', {'current_user': current_user, 'upload': upload})
-
 
 # Update upload
 @login_required

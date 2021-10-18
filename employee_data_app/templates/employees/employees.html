@@ -40,7 +40,7 @@
           <td>{{employee.employee_code}}</td>
           <td>{{employee.first_name}}</td>
           <td>{{employee.middle_name}}</td>
-          <td><a href="{% url 'update_employee' employee.id %}" class="btn btn-warning"><i class="fas fa-pen-nib"></i>
+          <td><a href="{% url 'update_employee' employee.id %}" class="btn btn-primary"><i class="fas fa-pen-nib"></i>
               Update</a></td>
           <td><a href="{% url 'employee_details' employee.id %}" class="btn btn-success"><i class="fas fa-eye"></i> View Details</a></td>
           <td><a href="{% url 'delete_employee' employee.id %}" class="btn  btn-danger"><i class="fas fa-trash-alt"></i>

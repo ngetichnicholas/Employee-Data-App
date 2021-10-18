@@ -1,0 +1,18 @@
+
+.card {
+    margin-top: 1rem;
+}
+.head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: start;
+  }
+  .title {
+    margin-bottom: 0;
+    color: #37783F;
+  }
+  .nav-link ,.navbar-brand{
+    color: white !important;
+  }

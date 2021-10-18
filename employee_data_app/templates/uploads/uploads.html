@@ -28,27 +28,28 @@
       </div>
       <table class="table table-bordered">
         <tr>
-          <th>Excel</th>
-          <th>Title</th>
+          <th>Excel File</th>
+          <th>Records</th>
+          <th>Status</th>
+          <th>Errors</th>
           <th>Date Uploaded</th>
           <th>Edit</th>
-          <th>View Details</th>
           <th>Delete</th>
         </tr>
         {% for upload in uploads %}
         <tr>
           <td>
             <div class="card">
-              <a href="{{upload.excel_file}}" download="" class="btn btn-outline-success doc"><h2><i class="fas fa-file-excel"></i></h2><i class="fa fa-download"
+              <a href="{{upload.excel_file}}" download="" class="btn btn-outline-success doc"><h5><i class="fas fa-file-excel"></i> {{upload.title}}</h5><i class="fa fa-download"
                   aria-hidden="true"></i> Download </a>
             </div>
           </td>
-          <td>{{upload.title}}</td>
+          <td>{{upload.records_uploaded}}</td>
+          <td>{{upload.status}}</td>
+          <td>{{upload.errors}}</td>
           <td>{{upload.timestamp|date}}</td>
-          <td><a href="{% url 'update_upload' upload.id %}" class="btn btn-warning"><i class="fas fa-pen-nib"></i>
+          <td><a href="{% url 'update_upload' upload.id %}" class="btn btn-primary"><i class="fas fa-pen-nib"></i>
               Update</a></td>
-          <td><a href="{% url 'upload_details' upload.id %}" class="btn btn-success"><i class="fas fa-eye"></i> View
-              Details</a></td>
           <td><a href="{% url 'delete_upload' upload.id %}" class="btn  btn-danger"><i class="fas fa-trash-alt"></i>
               Delete</a></td>
         </tr>
