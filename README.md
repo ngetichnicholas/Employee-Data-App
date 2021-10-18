@@ -17,8 +17,7 @@ To access this project on your local files, you can clone it using these steps
 ```sh
 $ git clone https://github.com/ngetichnicholas/Employee-Data-App.git
 ```
- 
-1. This will clone the repositoty into your local folder
+This will clone the repositoty into your local folder
 *****
 ## Running the cloned App
 The first thing to do is to change directory to project folder:
@@ -31,6 +30,7 @@ To open with VS Code, just run command `$ code .`
 
 ### Environment Variables
 Create `.env` file and add the following variables and update accordingly
+```sh
 SECRET_KEY='Your-Secret-key'
 DEBUG=True
 DB_NAME='database-name'
@@ -39,11 +39,9 @@ DB_PASSWORD='database-password'
 DB_HOST='127.0.0.1'
 ALLOWED_HOSTS='*'
 DISABLE_COLLECTSTATIC=1
-
-To set up email variables include the following:
-
 EMAIL_HOST_USER=your-email-address
 EMAIL_HOST_PASSWORD=your-email-password
+```
 
 ### Virtual Environment
 Create a virtual environment to install dependencies and activate it:
