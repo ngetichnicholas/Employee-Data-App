@@ -15,13 +15,6 @@ import django_heroku
 from decouple import config, Csv
 import dj_database_url
 
-cloudinary.config(
-    cloud_name =config('CLOUD_NAME'),
-    api_key=config('CLOUD_API_KEY'), 
-    api_secret=config('API_SECRET'),
-    secure = config('SECURE'),
-)
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
