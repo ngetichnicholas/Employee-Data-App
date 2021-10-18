@@ -21,10 +21,10 @@
       </div>
       {% endfor %}
       {% endif %}
-      <div class="head">
-        <h5 class="title">EMPLOYEE DETAILS</h5>
+      <div class="">
+        <h5 class="title text-center">EMPLOYEE DETAILS</h5>
       </div>
-      <table class="table table-bordered">
+      <table class="table table-bordered table-striped">
         <tr>
           <th>Employee Code</th>
           <td>{{employee.employee_code}}</td>
@@ -44,6 +44,10 @@
         <tr>
           <th>Employment Date</th>
           <td>{{employee.employment_date}}</td>
+        </tr>
+        <tr>
+          <th>Employment Duration</th>
+          <td>{{employee.employment_time}}</td>
         </tr>
         <tr>
           <th>Position</th>

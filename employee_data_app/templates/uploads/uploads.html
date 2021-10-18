@@ -47,7 +47,7 @@
           <td>{{upload.records_uploaded}}</td>
           <td>{{upload.status}}</td>
           <td>{{upload.errors}}</td>
-          <td>{{upload.timestamp|date}}</td>
+          <td>{{upload.timestamp}}</td>
           <td><a href="{% url 'update_upload' upload.id %}" class="btn btn-primary"><i class="fas fa-pen-nib"></i>
               Update</a></td>
           <td><a href="{% url 'delete_upload' upload.id %}" class="btn  btn-danger"><i class="fas fa-trash-alt"></i>
