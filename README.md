@@ -10,11 +10,43 @@ This is a Django web application with a MySQL database backend for managing empl
 * You need to have git installed. You can install it with the following command in your terminal
 `$ sudo apt install git-all`
 *****
-## Setup Instruction
+## Cloning the application
 To access this project on your local files, you can clone it using these steps
 1. Open your terminal
-1. Use this command to clone `$ git clone https://github.com/ngetichnicholas/Employee-Data-App.git`
+1. Use this command to clone:
+```sh
+`$ git clone https://github.com/ngetichnicholas/Employee-Data-App.git`
+```
+ 
 1. This will clone the repositoty into your local folder
+*****
+## Running the cloned App
+The first thing to do is to change directory to project folder:
+```sh
+`$ cd Employee-Data-App`
+```
+
+Create a virtual environment to install dependencies in and activate it:
+
+```sh
+`$ python3 -m venv virtual`
+`$ source virtual/bin/activate`
+```
+
+Then install the dependencies:
+
+```sh
+`(virtual)$ pip install -r requirements.txt`
+```
+Note the `(virtual)` in front of the prompt. This indicates that this terminal
+session operates in a virtual environment set up by `venv`.
+
+Once `pip` has finished downloading the dependencies:
+```sh
+`(virtual)$ python3 manage.py runserver`
+```
+And navigate to `http://127.0.0.1:8000`.
+
 *****
 ## Dependencies
 * django-bootstrap
