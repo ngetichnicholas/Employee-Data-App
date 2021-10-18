@@ -26,7 +26,7 @@ class UpdateUserForm(forms.ModelForm):
 class EmployeeForm(forms.ModelForm):
   class Meta:
     model = Employee
-    fields = ['first_name','middle_name','graduation_date','employment_date','position','salary','supervisors','employee_code']
+    fields = ['first_name','middle_name','graduation_date','employment_date','position','salary','supervisors']
     widgets = {
             'graduation_date': widgets.DateInput(attrs={'type': 'date'}),
             'employment_date': widgets.DateInput(attrs={'type': 'date'}),
