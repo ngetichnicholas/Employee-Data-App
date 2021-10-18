@@ -184,7 +184,7 @@ def update_upload(request, upload_id):
             sheet = wb.worksheets[0]
             row_count = sheet.max_row
             upload = upload_form.save(commit=False)
-            upload.records_uploaded = row_count
+            upload.records_uploaded = row_count-1
             upload.status = 'Complete'
             upload.errors = 'None'
             upload.save()
@@ -221,7 +221,7 @@ def add_upload(request):
             sheet = wb.worksheets[0]
             row_count = sheet.max_row
             upload = upload_form.save(commit=False)
-            upload.records_uploaded = row_count
+            upload.records_uploaded = row_count-1
             upload.status = 'Complete'
             upload.errors = 'None'
             upload.save()
