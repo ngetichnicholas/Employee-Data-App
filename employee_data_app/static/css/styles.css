@@ -22,3 +22,10 @@
   .forms {
     margin: 2rem;
   }
+  .banner {
+    background-image: url('../images/images.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 0 !important;
+    height: 100vh;
+  }

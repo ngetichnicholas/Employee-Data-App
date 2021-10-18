@@ -246,3 +246,15 @@ def update_profile(request):
         'user_form': user_form,
     }
     return render(request, 'profile/update.html', params)
+
+def search(request):
+  if 'employee' in request.GET and request.GET["employee"]:
+    search_term = request.GET.get("employee")
+    searched_employees = Employee.search_employees(search_term)
+    message = f"{search_term}"
+
+    return render(request,'search.html', {"message":message,"employees":searched_employees})
+
+  else:
+    message = "You haven't searched for any term"
+    return render(request,'search.html',{"message":message})

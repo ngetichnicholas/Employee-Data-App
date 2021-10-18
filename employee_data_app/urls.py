@@ -23,6 +23,9 @@ urlpatterns = [
     path('uploads', app_views.uploads,name='uploads'),
     path('update_upload/<int:upload_id>', app_views.update_upload,name='update_upload'),
     path('delete_upload/<int:upload_id>', app_views.delete_upload,name='delete_upload'),
+    
+    path('search',app_views.search,name='search'),
+
 ]
 if settings.DEBUG:
   urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

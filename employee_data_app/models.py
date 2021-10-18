@@ -39,6 +39,10 @@ class Employee(models.Model):
 
     def delete_employee(self):
         self.delete()
+        
+    @classmethod
+    def search_employees(cls, employee):
+        return cls.objects.filter(first_name__icontains=employee).all()
 
     def __str__(self):
         return f"{self.first_name} {self.middle_name}"
