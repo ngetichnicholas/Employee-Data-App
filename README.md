@@ -98,4 +98,4 @@ This project is under:
 *****
 ### Questions?
 Twitter: **[@ngetichnichoh](https://twitter.com/ngetichnichoh)**  
-Email: **[nicholas.ngetich@student.moringaschool.com](mailto:nicholas.ngetich@student.moringaschool.com)**
+Email: **[ngetichnicholas903@gmail.com](mailto:ngetichnicholas903@gmail.com)**
