@@ -4,7 +4,11 @@ Nicholas Ngetich
 *****
 ### Description
 This is a Django web application with a MySQL database backend for managing employee data.
-
+#### Employee List
+![alt text](https://res.cloudinary.com/dbos9xidr/image/upload/v1634657960/screencapture-nick-employee-data-app-herokuapp-employees-2021-10-19-18_31_04_yojpsf.png)
+#### Uploads
+![alt text](https://res.cloudinary.com/dbos9xidr/image/upload/v1634657959/screencapture-nick-employee-data-app-herokuapp-uploads-2021-10-19-18_31_49_er99zb.png)
+*****
 ### Prerequisites
 * Text editor eg Visual Studio Code
 * You need to have git installed. You can install it with the following command in your terminal
@@ -68,7 +72,6 @@ Once `pip` has finished downloading the dependencies:
 (virtual)$ python3 manage.py runserver
 ```
 And navigate to `http://127.0.0.1:8000`.
-
 *****
 ## Dependencies
 * django-bootstrap
@@ -87,7 +90,7 @@ And navigate to `http://127.0.0.1:8000`.
 * CSS
 ******
 ### Live Link
-Or you can access the web application directly via this [https://nick-employee-data-app.herokuapp.com/](https://nick-employee-data-app.herokuapp.com/).
+Or you can access the web application directly via this link [https://nick-employee-data-app.herokuapp.com/](https://nick-employee-data-app.herokuapp.com/)
 *****
 ### License
 This project is under:  
